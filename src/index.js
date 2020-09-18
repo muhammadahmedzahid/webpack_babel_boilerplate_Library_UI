@@ -6,9 +6,32 @@ console.log('test');
 // ./ is used to specify the current directory
 // import './test.css'
 import Tooltip from './UI_files/tooltip';
-
+import Dropdown from './UI_files/dropdown';
+import Tabs from './UI_files/tabs';
+import Snackbar from './UI_files/snackbar'
 // create a tooltip
 
 const tooltip = new Tooltip(document.querySelector('.tooltip'));
 
 tooltip.init();
+
+// create dropdowns
+
+const dropdowns = document.querySelectorAll('.dropdown');
+dropdowns.forEach(dropdown => {
+    const instance = new Dropdown(dropdown);
+    instance.init();
+});
+
+// create tabs
+const tabs = new Tabs(document.querySelector('.tabs'));
+tabs.init();
+
+// create snackbar
+const snackbar = new Snackbar();
+snackbar.init();
+
+const button = document.querySelector('button');
+button.addEventListener('click', e => {
+    snackbar.show('you clicked me :) ');
+})
